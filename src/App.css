@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -6,7 +7,76 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.sec1-f{
+  padding: 50px 0px ;
+  background-image: url("/public/images/footer-bg.png"); 
+  background-size: cover;
+  background-position: bottom;
+}
+.sec2-f{
+  padding: 50px 0px ;
+  background-color: white;
+}
+#footer a {
+  color: #c3c3c3;
+  text-decoration: solid;
+  text-align: center;
+}
+.footer-bigcar {
+  width: 100%;
+  margin: -30px;
+  margin-top: -180px;
+}
+.f-logo-img{
+  float: left;
+  max-width: 100px;
+}
+button.search-button-navbar.btn.btn-primary {
+  background: none;
+  z-index: 5;
+  color: black;
+  margin-left: -50px;
+  border: none;
+}
+input.me-2.searchbar-nav.form-control {
+  width: 300px;
+  padding-right: 35px;
+  height: 35px;
+}
+.navbar-toggler-icon{
+  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 29%27%3e9%3cpath stroke=%27rgba%28555, 255, 255, 255%25%27 stroke-linecap=%27round%27 stroke-miterlimit=%2714%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e") !important
+}
+.languagelist{
+  list-style-type: none;
+  line-height: 45px;
+  cursor: pointer;
+}
+.languageImg{
+    width: 30px;
+    border-radius: 50px;
+}
+a.navbar-brand {
+  color: white;
+  margin-left: 20px;
+}
+.title-carousel{
+  font-weight: 700;
+}
+.carousel-caption{
+  bottom: 30% !important;
+}
+.carousel-inner,.carousel,.carousel-item {
+  max-height: 90vh !important;
+}
+.yellow-text{
+  color: #FDC101;
+}
+.white-text{
+  color: #fff;
+}
+.navbar-toggler:focus{
+  box-shadow: none !important;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
