@@ -5,7 +5,7 @@ export default function AllBrands() {
     const [data, setData] =  useState<any[]>([])
     useEffect(()=>{ 
         getAllBrands().then((x)=>setData(x))
-    })
+    },[])
 
     return (<>
     <div className="container">
@@ -17,7 +17,7 @@ export default function AllBrands() {
                         {data.map((x)=><>
                         <div className="archive-item col-md-2">
                             <center >
-                                <img src={x.logo} />
+                                <img src={x.logo}  alt="car"/>
                                 <div className="archive-item-inner">
                                     <h4>{x.name}</h4>
                                     <span className="yellow-text totalcars">Total Cars: {x.cars}</span>    

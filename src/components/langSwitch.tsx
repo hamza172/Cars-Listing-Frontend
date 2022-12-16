@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 
 export default function SwitchLanguage() {
     const [show, setShow] = useState(false);
-    const [language, setLanguage] = useState(0);
 
     const languages = 
     [{
@@ -61,6 +60,7 @@ export default function SwitchLanguage() {
         code:"pl"
     },]
 
+    const [language, setLanguage] = useState(languages.findIndex(x=> x.code===localStorage.getItem("language")))
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -70,6 +70,7 @@ export default function SwitchLanguage() {
         let index= languages.findIndex(x=> x.code===code)
         setLanguage(index)
         handleClose()
+        window.location.reload();
     }
 
     return (<>

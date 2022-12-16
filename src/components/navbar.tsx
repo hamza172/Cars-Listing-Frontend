@@ -29,7 +29,9 @@ export default function NavBar() {
               <Offcanvas.Body>
                 <Nav className="justify-content-start flex-grow-1 pe-3">
                   <Link to='/' className='no-underline'>Home</Link>
+                  <Link to='/all-cars' className='no-underline'>All Cars</Link>
                   <Link to='/all-brands' className='no-underline'>All Brands</Link>
+                  <Link to='/hot-cars' className='no-underline'>Hot Cars</Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
