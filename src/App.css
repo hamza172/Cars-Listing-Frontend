@@ -2,11 +2,14 @@
 .App {
   text-align: center;
 }
-
+h4{
+  font-size: 18px !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
 .sec1-f{
   padding: 50px 0px ;
   background-image: url("/public/images/footer-bg.png"); 
@@ -69,13 +72,49 @@ a.navbar-brand {
   max-height: 90vh !important;
 }
 .yellow-text{
-  color: #FDC101;
+  color: #FDC101 !important;
 }
 .white-text{
-  color: #fff;
+  color: #fff !important;
 }
 .navbar-toggler:focus{
   box-shadow: none !important;
+}
+.pageCon {
+  margin: 50px 0px;
+  background: #F6F6F6;
+  padding: 0px;
+}
+.archive{
+  padding: 40px;
+}
+.archive-item{
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+.archive-item img{
+  border-radius: 5px 5px 0px 0px;
+  width: 100%;
+}
+.archive-item-inner {
+  background: #272727;
+  padding: 5px;
+  color: white;
+  border-radius: 0px 0px 5px 5px;
+}
+.page-title {
+  width: 100%;
+  padding: 20px 40px;
+  background: #212529;
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+}
+a.no-underline {
+  text-decoration-line: none;
+}
+.totalcars{
+  font-size: 14 px;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

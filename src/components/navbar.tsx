@@ -7,6 +7,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import SwitchLanguage from './langSwitch';
 import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 
 export default function NavBar() {
@@ -27,14 +28,13 @@ export default function NavBar() {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-start flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Home</Nav.Link>
-                  <Nav.Link href="#action2">Link</Nav.Link>
-                  
+                  <Link to='/' className='no-underline'>Home</Link>
+                  <Link to='/all-brands' className='no-underline'>All Brands</Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
             <Navbar.Toggle onClick={handleShow}/>
-            <Navbar.Brand href="#">BRAND</Navbar.Brand>
+            <Link to='/' className='no-underline'><Navbar.Brand className='white-text'>BRAND</Navbar.Brand></Link>
             </div>
             <div className="d-flex align-items-center">
             <Form className="d-flex">
