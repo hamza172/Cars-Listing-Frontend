@@ -75,7 +75,7 @@ export default function SwitchLanguage() {
 
     return (<>
 
-        <Button style={{marginLeft:"10px"}} variant="dark" onClick={handleShow} className="me-2">
+        <Button style={{marginLeft:"10px"}} variant="dark" onClick={handleShow} className="me-2 lang-switch-but">
             <img className="languageImg" src={languages[language].img} alt=''/> {languages[language].name}
         </Button>
         <Offcanvas show={show} onHide={handleClose} placement="end">

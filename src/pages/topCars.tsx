@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import Loader from "../components/loading"
 import { getAllCars } from "../functions/apiCalls"
 
-export default function AllCars() {
+export default function AllTopCars() {
     const [data, setData] =  useState<any[]>([])
     useEffect(()=>{ 
         getAllCars().then((x)=>setData(x))
@@ -12,7 +12,7 @@ export default function AllCars() {
     return (<>
    {data.length>0? <div className="container">
         <div className="pageCon">
-            <div className="page-title">All Cars</div>
+            <div className="page-title">Top Cars</div>
             <div className="archive">
                 <div className="row">
                     {(data.length>0)&&<>
@@ -39,8 +39,8 @@ export default function AllCars() {
                 </div>
             </div>
         </div>
-    </div>:
-            <Loader/>}
-
+    </div>
+        :
+        <Loader/>}
     </>)
 }

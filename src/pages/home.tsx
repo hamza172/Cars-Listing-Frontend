@@ -10,6 +10,7 @@ export default function Home() {
     const [hybrid, setHybrid] =  useState<any[]>([])
     const [hotCars, sethotCars] =  useState<any[]>([])
     const [latestCars, setLatestCars] =  useState<any[]>([])
+
     useEffect(()=>{ 
         getHomeElectricCars().then((x)=>setElectricCars(x || []))
         getHomeTopCars().then((x)=>setTopCars(x || []))
@@ -17,7 +18,7 @@ export default function Home() {
         getHomeHybridCars().then(x=>setHybrid(x || []))
         getHomeHotCars().then(x=>sethotCars(x || []))
         getHomeLatestCars().then(x=>setLatestCars(x || []))
-    },[])
+    },[])    
     return(<>
          <div className='carousel-homepage'>
          <Carousel >
@@ -48,7 +49,7 @@ export default function Home() {
                         <div className="archive-item-4 col-md-3">
                                 <img src={x.image}  alt="car"/>
                                 <div className="archive-item-inner-4">
-                                    <Link to="#" className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
+                                    <Link to={'/get-car/'+x.car_id} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
                                     <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
                                     <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
                                 </div>
@@ -71,7 +72,7 @@ export default function Home() {
                                             <img src={x.image} alt="car" className='image-card-archive' />    
                                         </div>
                                         <div className="col-md-7">
-                                            <h4>{x.brand} {x.generation} {x.startofproduction} </h4>
+                                            <Link to={'/get-car/'+x.car_id} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
                                             <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
                                             <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
                                             <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
@@ -120,7 +121,7 @@ export default function Home() {
                                             <img src={x.image} alt="car" className='image-card-archive' />    
                                         </div>
                                         <div className="col-md-7">
-                                            <h4>{x.brand} {x.generation} {x.startofproduction} </h4>
+                                            <Link to={'/get-car/'+x.car_id} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
                                             <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
                                             <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
                                             <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
@@ -149,7 +150,7 @@ export default function Home() {
                                             <img src={x.image} alt="car" className='image-card-archive' />    
                                         </div>
                                         <div className="col-md-7">
-                                            <h4>{x.brand} {x.generation} {x.startofproduction} </h4>
+                                            <Link to={'/get-car/'+x.car_id} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
                                             <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
                                             <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
                                             <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
@@ -169,27 +170,19 @@ export default function Home() {
                 <div className="page-title"><span style={{float:"left"}}>Discover Latest Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="#">See More &gt;&gt;</Link></span></div>
                 <div className="archive">
                     <div className="row">
+                       
                         {(latestCars.length>0)&&<>
-                            {latestCars.map((x)=><>
-                            <div className="col-md-6">
-                                <div className="archive-item-cars">
-                                    <div className="row align-items-center">
-                                        <div className="col-md-5">
-                                            <img src={x.image} alt="car" className='image-card-archive' />    
-                                        </div>
-                                        <div className="col-md-7">
-                                            <h4>{x.brand} {x.generation} {x.startofproduction} </h4>
-                                            <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
-                                            <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
-                                            <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
-                                            <span className="grey-text totalcars">Maximum speed : {x.maximumspeed}</span>  <br/>  
-                                        </div>
-                                    </div>
+                        {latestCars.map((x)=><>
+                        <div className="archive-item-4 col-md-3">
+                                <img src={x.image}  alt="car"/>
+                                <div className="archive-item-inner-4">
+                                    <Link to={'/get-car/'+x.car_id} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
+                                    <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
+                                    <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
                                 </div>
-                            </div>
-                            
-                        </>)}
-                        </>}
+                        </div>
+                    </>)}
+                    </>}
                         </div>
                     </div>    
                     </div>    

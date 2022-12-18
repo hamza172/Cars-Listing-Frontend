@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Loader from "../components/loading"
-import { getAllCars } from "../functions/apiCalls"
+import { getAllElectricCars } from "../functions/apiCalls"
 
-export default function AllCars() {
+export default function AllElectricCars() {
     const [data, setData] =  useState<any[]>([])
     useEffect(()=>{ 
-        getAllCars().then((x)=>setData(x))
+        getAllElectricCars().then((x)=>setData(x))
     },[])
 
     return (<>
-   {data.length>0? <div className="container">
+    { data.length>0 ?<div className="container">
         <div className="pageCon">
-            <div className="page-title">All Cars</div>
+            <div className="page-title">All Electric Cars</div>
             <div className="archive">
                 <div className="row">
                     {(data.length>0)&&<>

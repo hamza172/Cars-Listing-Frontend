@@ -11,11 +11,11 @@ export default function Footer() {
                             <center>
                                 <br/>
                                 <h4><span className="yellow-text">TOP CHARTS</span></h4>
-                                <Link to="#">Top Cars</Link><br/>
-                                <Link to="#">Top Electric Cars</Link><br/>
-                                <Link to="#">Hot Cars</Link><br/>
-                                <Link to="#">Top Hybrid Cars</Link><br/>
-                                <Link to="#">All Brands</Link><br/>
+                                <Link to="/all-cars" className="white-text">Top Cars</Link><br/>
+                                <Link to="/all-electric-cars" className="white-text">Top Electric Cars</Link><br/>
+                                <Link to="/hot-cars" className="white-text">Hot Cars</Link><br/>
+                                <Link to="#" className="white-text">Top Hybrid Cars</Link><br/>
+                                <Link to="/all-brands" className="white-text">All Brands</Link><br/>
                             </center>
                         </div>
                         <div className="col-md-4">
@@ -26,11 +26,11 @@ export default function Footer() {
                             <center>
                                 <br/>
                                 <h4><span className="yellow-text">SUPPORT</span></h4>
-                                <Link to="#">Privacy Policy</Link><br/>
-                                <Link to="#">Contact Us</Link><br/>
-                                <Link to="#">Terms of Use</Link><br/>
-                                <Link to="#">DMCA</Link><br/>
-                                <Link to="#">Disclaimer</Link><br/>
+                                <Link to="#" className="white-text">Privacy Policy</Link><br/>
+                                <Link to="#" className="white-text">Contact Us</Link><br/>
+                                <Link to="#" className="white-text">Terms of Use</Link><br/>
+                                <Link to="#" className="white-text">DMCA</Link><br/>
+                                <Link to="#" className="white-text">Disclaimer</Link><br/>
                             </center>
                         </div>
                     </div>

@@ -8,21 +8,34 @@ import Footer from './components/footer';
 import AllBrands from './pages/brands';
 import HotCars from './pages/hotCars';
 import AllCars from './pages/allCars';
+import AllElectricCars from './pages/electricCars';
+import SingleCar from './pages/single-car';
+import ScrollToTop from './components/scrollToTop';
+import Login from './pages/login';
+import Admin from './pages/admin';
+import Logout from './functions/logout';
+import CompareCars from './pages/compareCars';
 
 function App() {
-  return (
+  return (<>
       <React.Fragment>
-        <BrowserRouter>
-            <NavBar/>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/all-brands" element={<AllBrands />} />
-                <Route path="/hot-cars" element={<HotCars />} />
-                <Route path="/all-cars" element={<AllCars />} />
-              </Routes>
-            <Footer/>
-        </BrowserRouter>
-      </React.Fragment>
+          <BrowserRouter>
+              <ScrollToTop />
+                <Routes>
+                  <Route path="/" element={<><NavBar/><Home /><Footer/></>} />
+                  <Route path="/login" element={<><NavBar/><Login /><Footer/></>} />
+                  <Route path="/logout" element={<Logout/>}/>
+                  <Route path="/admin" element={<Admin />} />
+                  <Route path="/all-brands" element={<><NavBar/><AllBrands /><Footer/></>} />
+                  <Route path="/hot-cars" element={<><NavBar/><HotCars /><Footer/></>} />
+                  <Route path="/all-cars" element={<><NavBar/><AllCars /><Footer/></>} />
+                  <Route path="/all-electric-cars" element={<><NavBar/><AllElectricCars /><Footer/></>} />
+                  <Route path="/compare-cars" element={<><NavBar/><CompareCars /><Footer/></>} />
+                  <Route path="/get-car/:id" element={<><NavBar/><SingleCar /><Footer/></>} />
+                </Routes>
+          </BrowserRouter>
+        </React.Fragment>
+    </>
   );
 }
 

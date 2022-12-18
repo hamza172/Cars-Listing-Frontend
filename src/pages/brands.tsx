@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import Loader from "../components/loading"
 import { getAllBrands } from "../functions/apiCalls"
 
 export default function AllBrands() {
@@ -8,7 +9,7 @@ export default function AllBrands() {
     },[])
 
     return (<>
-    <div className="container">
+    {data.length>0 ? <div className="container">
         <div className="pageCon">
             <div className="page-title">All Brands</div>
             <div className="archive">
@@ -29,7 +30,8 @@ export default function AllBrands() {
                 </div>
             </div>
         </div>
-    </div>
+    </div>:
+            <Loader/>}
 
     </>)
 }

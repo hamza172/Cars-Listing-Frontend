@@ -23,7 +23,7 @@ export default function NavBar() {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title >
-                  Menu
+                  BRAND
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -31,7 +31,11 @@ export default function NavBar() {
                   <Link to='/' className='no-underline'>Home</Link>
                   <Link to='/all-cars' className='no-underline'>All Cars</Link>
                   <Link to='/all-brands' className='no-underline'>All Brands</Link>
+                  <Link to='/compare-cars' className='no-underline'>Compare Cars</Link>
                   <Link to='/hot-cars' className='no-underline'>Hot Cars</Link>
+                  <Link to='/all-electric-cars' className='no-underline'>Electric Cars</Link>
+                  <Link to='/all-hybrid-cars' className='no-underline'>Hybrid Cars</Link>
+                  <Link to='/contact-us' className='no-underline'>Contact Us</Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

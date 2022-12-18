@@ -26,6 +26,16 @@ export async function getAllCars(){
   console.log(e)  
   }
 }
+export async function getAllElectricCars(){
+  try{
+      let lang = localStorage.getItem('language')
+      let response = await axios.get(process.env.REACT_APP_API_URL + '/cars/electric?lang='+lang)
+      return response.data
+  } catch(e){
+  console.log(e)  
+  }
+}
+
 export async function getHomeElectricCars(){
   try{
       let lang = localStorage.getItem('language')
@@ -78,5 +88,37 @@ export async function getHomeLatestCars(){
       return response.data
   } catch(e){
   console.log(e)
+  }
+}
+
+export async function getOne(id:Number){
+  try{
+    let lang = localStorage.getItem('language')
+    let response = await axios.get(process.env.REACT_APP_API_URL + '/cars/'+id+'?lang='+lang)
+    return response.data[0]
+  } catch(e){
+    console.log(e)
+  }
+}
+
+export async function toHotCar(id:Number){
+  try{
+    let token = localStorage.getItem('token')
+    console.log(token)
+    console.log(id)
+    let response = await axios.put(process.env.REACT_APP_API_URL + '/hotCars/set?car_id='+id+'&token='+token)
+    return true
+  } catch(e){
+    console.log(e)
+  }
+}
+
+export async function removeHotCar(id:Number){
+  try{
+    let token = localStorage.getItem('token')
+    let response = await axios.put(process.env.REACT_APP_API_URL + '/hotCars/unset?car_id='+id+'&token='+token)
+    return true
+  } catch(e){
+    console.log(e)
   }
 }

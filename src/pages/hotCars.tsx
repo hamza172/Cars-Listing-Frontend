@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import Loader from "../components/loading"
 import { getAllHotCars } from "../functions/apiCalls"
 
 export default function HotCars() {
@@ -8,7 +10,7 @@ export default function HotCars() {
     },[])
 
     return (<>
-    <div className="container">
+    {data.length>0?<div className="container">
         <div className="pageCon">
             <div className="page-title">Hot Cars</div>
             <div className="archive">
@@ -22,7 +24,7 @@ export default function HotCars() {
                                         <img src={x.image}  alt="car" className='image-card-archive' />    
                                     </div>
                                     <div className="col-md-7">
-                                        <h4>{x.brand} {x.generation} {x.startofproduction} </h4>
+                                        <Link to={'/get-car/'+x.car_id} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
                                         <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
                                         <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
                                         <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
@@ -37,7 +39,8 @@ export default function HotCars() {
                 </div>
             </div>
         </div>
-    </div>
+    </div>:
+            <Loader/>}
 
     </>)
 }
