@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import Loader from "../components/loading"
 import { getAllBrands } from "../functions/apiCalls"
 
@@ -20,7 +21,7 @@ export default function AllBrands() {
                             <center >
                                 <img src={x.logo}  alt="car"/>
                                 <div className="archive-item-inner">
-                                    <h4>{x.name}</h4>
+                                    <Link to={'/brands-models/'+x.name} className="no-underline white-text">{x.name}</Link><br/>
                                     <span className="yellow-text totalcars">Total Cars: {x.cars}</span>    
                                 </div>
                                 </center>

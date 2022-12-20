@@ -26,11 +26,11 @@ export default function Footer() {
                             <center>
                                 <br/>
                                 <h4><span className="yellow-text">SUPPORT</span></h4>
-                                <Link to="#" className="white-text">Privacy Policy</Link><br/>
-                                <Link to="#" className="white-text">Contact Us</Link><br/>
-                                <Link to="#" className="white-text">Terms of Use</Link><br/>
-                                <Link to="#" className="white-text">DMCA</Link><br/>
-                                <Link to="#" className="white-text">Disclaimer</Link><br/>
+                                <Link to="/privacy-policy" className="white-text">Privacy Policy</Link><br/>
+                                <Link to="/contact-us" className="white-text">Contact Us</Link><br/>
+                                <Link to="/terms-of-service" className="white-text">Terms of Use</Link><br/>
+                                <Link to="/dmca" className="white-text">DMCA</Link><br/>
+                                <Link to="/disclaimer" className="white-text">Disclaimer</Link><br/>
                             </center>
                         </div>
                     </div>

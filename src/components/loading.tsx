@@ -6,3 +6,9 @@ export default function Loader(){
             
     </>)
 }
+export function MiniLoader(){
+    return(<>
+        <center><br/><br/><Spinner animation="border" /><br/><br/></center>
+            
+    </>)
+}

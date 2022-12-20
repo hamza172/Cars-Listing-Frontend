@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
-import { getHomeElectricCars, getHomeTopCars, getHomeBrands, getHomeHybridCars, getHomeHotCars, getHomeLatestCars } from "../functions/apiCalls"
+import { getHomeElectricCars, getHomeTopCars, getHomeBrands, getHomeComparisonCar, getHomeHybridCars, getHomeHotCars, getHomeLatestCars } from "../functions/apiCalls"
 
 export default function Home() {
     const [electricCars, setElectricCars] =  useState<any[]>([])
@@ -10,6 +11,7 @@ export default function Home() {
     const [hybrid, setHybrid] =  useState<any[]>([])
     const [hotCars, sethotCars] =  useState<any[]>([])
     const [latestCars, setLatestCars] =  useState<any[]>([])
+    const [compareCars, setCompareCars] =  useState<any[]>([])
 
     useEffect(()=>{ 
         getHomeElectricCars().then((x)=>setElectricCars(x || []))
@@ -17,6 +19,7 @@ export default function Home() {
         getHomeBrands().then(x=>setBrands(x || []))
         getHomeHybridCars().then(x=>setHybrid(x || []))
         getHomeHotCars().then(x=>sethotCars(x || []))
+        getHomeComparisonCar().then(x=>setCompareCars(x || []))
         getHomeLatestCars().then(x=>setLatestCars(x || []))
     },[])    
     return(<>
@@ -41,7 +44,7 @@ export default function Home() {
          </div>
          <div className="container">
         <div className="pageCon">
-            <div className="page-title"><span style={{float:"left"}}>Top Electric Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="#">See More &gt;&gt;</Link></span></div>
+            <div className="page-title"><span style={{float:"left"}}>Top Electric Cars</span> <span  style={{float:"right"}}><Link to="/all-electric-cars" className='no-underline yellow-text'>See More &gt;&gt;</Link></span></div>
             <div className="archive">
                 <div className="row">
                     {(electricCars.length>0)&&<>
@@ -58,9 +61,46 @@ export default function Home() {
                     </>}
                 </div>
             </div>
+            <div className="page-title"><span style={{float:"left"}}>Compare Cars</span> <span  style={{float:"right"}}><Link to="/all-electric-cars"  className='no-underline yellow-text'>See More &gt;&gt;</Link></span></div>
+                <div className="archive">
+                    <div className="row">
+                        {(compareCars.length>0)&&<>
+                            {compareCars.map((x)=><>
+                            <div className="archive-item-4 col-md-6">
+                                    <div className='row'>
+                                        <div className='col-6' >
+                                            <img src={x.car1[0].image}  alt="car"/>
+                                        </div>
+                                        <div className='col-6'>
+                                            <img src={x.car2[0].image}  alt="car"/>
+                                        </div>
+                                    </div>
+                                    <div className="archive-item-inner-4">
+                                     <center>
+                                        <img className='vs-image' src="/images/vs.png" alt="vs"/>
+                                        </center>
+                                        <div className='row'>
+                                            <div className='col-6' >
+                                            <Link to={'/compare-two-cars/'+x.car1[0].car_id+'/'+x.car2[0].car_id} className='no-underline'>{x.car1[0].brand} {x.car1[0].generation} {x.car1[0].startofproduction} </Link><br/>
+                                                <span className="grey-text totalcars">Power HP : {x.car1[0].power}</span>  <br/>
+                                                <span className="grey-text totalcars">Brand : {x.car1[0].brand}</span><br/>
+                                            </div>
+                                            <div className='col-6'>
+                                            <Link to={'/compare-two-cars/'+x.car1[0].car_id+'/'+x.car2[0].car_id} className='no-underline'>{x.car2[0].brand} {x.car2[0].generation} {x.car2[0].startofproduction} </Link><br/>
+                                                <span className="grey-text totalcars">Power HP : {x.car2[0].power}</span>  <br/>
+                                                <span className="grey-text totalcars">Brand : {x.car2[0].brand}</span><br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </>)}
+                        </>}
+                        </div>
+                    </div>    
+                    <center><Link to='/compare-cars/' className='no-underline'><Button>Choose Cars to Compare</Button></Link></center> 
             {/* ------------------------ */}
             <div className="pageCon">
-                <div className="page-title"><span style={{float:"left"}}>Top Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="#">See More &gt;&gt;</Link></span></div>
+                <div className="page-title"><span style={{float:"left"}}>Top Cars</span> <span  style={{float:"right"}}><Link to="/all-cars" className='no-underline yellow-text'>See More &gt;&gt;</Link></span></div>
                 <div className="archive">
                     <div className="row">
                         {(topCars.length>0)&&<>
@@ -86,9 +126,10 @@ export default function Home() {
                         </>}
                         </div>
                     </div>    
+
                     {/* ------------------------ */}
                     <div className="pageCon">
-                        <div className="page-title"><span style={{float:"left"}}>Brands</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="#">See More &gt;&gt;</Link></span></div>
+                        <div className="page-title"><span style={{float:"left"}}>Brands</span> <span  style={{float:"right"}}><Link to="/all-brands" className='no-underline yellow-text'>See More &gt;&gt;</Link></span></div>
                         <div className="archive">
                             <div className="row">
                                 {(brands.length>0)&&<>
@@ -109,7 +150,7 @@ export default function Home() {
                     </div>  
                     {/* ------------------------ */}
             <div className="pageCon">
-                <div className="page-title"><span style={{float:"left"}}>Top Hybrid Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="#">See More &gt;&gt;</Link></span></div>
+                <div className="page-title"><span style={{float:"left"}}>Top Hybrid Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="/all-hybrid-cars">See More &gt;&gt;</Link></span></div>
                 <div className="archive">
                     <div className="row">
                         {(hybrid.length>0)&&<>
@@ -138,7 +179,7 @@ export default function Home() {
                     </div>
                     {/* ------------------------ */}
             <div className="pageCon">
-                <div className="page-title"><span style={{float:"left"}}>Hot Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="#">See More &gt;&gt;</Link></span></div>
+                <div className="page-title"><span style={{float:"left"}}>Hot Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="/hot-cars">See More &gt;&gt;</Link></span></div>
                 <div className="archive">
                     <div className="row">
                         {(hotCars.length>0)&&<>
@@ -167,7 +208,7 @@ export default function Home() {
                     </div>    
                     {/* --------------- */}
                     <div className="pageCon">
-                <div className="page-title"><span style={{float:"left"}}>Discover Latest Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="#">See More &gt;&gt;</Link></span></div>
+                <div className="page-title"><span style={{float:"left"}}>Discover Latest Cars</span> </div>
                 <div className="archive">
                     <div className="row">
                        

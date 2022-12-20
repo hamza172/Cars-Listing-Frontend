@@ -240,6 +240,12 @@ a.no-underline {
   text-decoration-line: none;
   color: white !important;
 }
+.vs-image{ 
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 50px !important;
+  margin-top: -260px;
+}
 @media screen and (max-width: 600px) {
   .image-card-archive{
     height: 175px;

@@ -16,6 +16,7 @@ export default function SingleCar(){
         getHomeTopCars().then((x)=>setTopCars(x || []))
         getHomeHotCars().then(x=>sethotCars(x || []))
     },[data,id])
+    console.log(data)
     return(<>
         {data.brand ?
             <div className="container">
@@ -304,6 +305,53 @@ export default function SingleCar(){
                             </div>
                         </div>
                         <div className="pageCon ">
+                            <div className="page-title"><span style={{float:"left"}}>Electric</span> </div>
+                            <div className="p-3">
+                                <div className="p-4">
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">Battery capacity</div>
+                                        <div className="col-6">{data.batterycapacity}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">Average Energy consumption (WLTP)</div>
+                                        <div className="col-6">{data.averageenergyconsumptionwltp}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">Engine location number 1</div>
+                                        <div className="col-6">{data.enginelocationnumber1}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">Engine location number 2	</div>
+                                        <div className="col-6">{data.enginelocationnumber2}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">System power</div>
+                                        <div className="col-6">{data.systempower}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">System torque</div>
+                                        <div className="col-6">{data.systemtorque}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">Average Energy consumption</div>
+                                        <div className="col-6">{data.averageenergyconsumption}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">Electric motor power number 1</div>
+                                        <div className="col-6">{data.electricmotorpowernumber1}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">Electric motor power number 2	</div>
+                                        <div className="col-6">{data.electricmotorpowernumber2}</div>
+                                    </div>
+                                    <div className="row row-techsheet">
+                                        <div className="col-6 blue-text">Electric Range	</div>
+                                        <div className="col-6">{data.electricrange}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="pageCon ">
                             <div className="page-title"><span style={{float:"left"}}>Drivetrain</span> </div>
                             <div className="p-3">
                                 <div className="p-4">
@@ -445,7 +493,7 @@ export default function SingleCar(){
                                         <center >
                                             <img src={x.logo}  alt="car"/>
                                             <div className="archive-item-inner">
-                                                <h4>{x.name}</h4>
+                                                <Link to={'/brands-models/'+x.name} className="no-underline white-text">{x.name}</Link><br/>
                                                 <span className="yellow-text totalcars">Total Cars: {x.cars}</span>    
                                             </div>
                                             </center>

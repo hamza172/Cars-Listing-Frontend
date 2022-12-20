@@ -1,4 +1,4 @@
-import { getAllCars, removeHotCar, toHotCar } from "../functions/apiCalls"
+import { getAllCars, removeCar, removeHotCar, toHotCar } from "../functions/apiCalls"
 import { useEffect,useState } from "react"
 import MaterialTable from "material-table";
 import AdminNavbar from "../components/adminNavBar";
@@ -19,7 +19,7 @@ export default function Admin (){
         
     },[])
     const handledelete = (id) =>{
-
+        removeCar(id)
     }
 
     const changeHotCar = async(newValue,id) =>{
@@ -71,16 +71,23 @@ export default function Admin (){
                             actionsColumnIndex: -1,
                             pageSize:20,
                         }}
-                        actions={[
-                            {
-                              icon: 'delete',
-                              tooltip: 'Delete Car',
-                              onClick: (event, rowData) => handledelete(rowData.car_id)
-                            }
-                          ]}
+                          editable={{
+                            onRowDelete: oldData =>
+                              new Promise((resolve, reject) => {
+                                setTimeout(() => {
+                                  handledelete(oldData.car_id)
+                                  const dataDelete = [...data];
+                                  const index = oldData.tableData.id;
+                                  dataDelete.splice(index, 1);
+                                  setData([...dataDelete]);
+                    
+                                  resolve(data);
+                                }, 1000)
+                              }),
+                        }}
                     
                         data={data}
-                        title="Demo Title"
+                        title="All Cars"
                         />
                     </div>
                 </div>

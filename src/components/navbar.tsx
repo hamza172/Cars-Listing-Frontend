@@ -8,12 +8,20 @@ import SwitchLanguage from './langSwitch';
 import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function NavBar() {
-    const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const [search, setSearch] = useState('');
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const handleSearch = () => {
+      navigate('/search/'+search);
+    }
+
     return (<>
         <Navbar key='expand' bg="dark" expand={false}>
           <Container >
@@ -23,7 +31,7 @@ export default function NavBar() {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title >
-                  BRAND
+                SOLNCAR
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -40,13 +48,14 @@ export default function NavBar() {
               </Offcanvas.Body>
             </Navbar.Offcanvas>
             <Navbar.Toggle onClick={handleShow}/>
-            <Link to='/' className='no-underline'><Navbar.Brand className='white-text'>BRAND</Navbar.Brand></Link>
+            <Link to='/' className='no-underline'><Navbar.Brand className='white-text'>SOLNCAR</Navbar.Brand></Link>
             </div>
             <div className="d-flex align-items-center">
-            <Form className="d-flex">
+            <Form className="d-flex" onSubmit={handleSearch}>
                   <Form.Control
                     type="search"
                     placeholder="Search"
+                    onChange={(e) => setSearch(e.target.value)}
                     className="me-2 searchbar-nav"
                     aria-label="Search"
                   />
