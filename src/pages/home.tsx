@@ -12,6 +12,8 @@ export default function Home() {
     const [hotCars, sethotCars] =  useState<any[]>([])
     const [latestCars, setLatestCars] =  useState<any[]>([])
     const [compareCars, setCompareCars] =  useState<any[]>([])
+    console.log(process.env.REACT_APP_API_URL)
+    console.log(process.env.SCRAPPING_APP_API_URL)
 
     useEffect(()=>{ 
         getHomeElectricCars().then((x)=>setElectricCars(x || []))
