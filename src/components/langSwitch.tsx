@@ -1,5 +1,5 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
 export default function SwitchLanguage() {
@@ -59,8 +59,15 @@ export default function SwitchLanguage() {
         img: "https://qesot.com//images/flags/pl.png",
         code:"pl"
     },]
-
-    const [language, setLanguage] = useState(languages.findIndex(x=> x.code===localStorage.getItem("language")))
+    const [language, setLanguage] = useState(0)
+    useEffect(()=>{
+        if (localStorage.getItem("language")){
+            setLanguage(languages.findIndex(x=> x.code===localStorage.getItem("language")))
+        } else {
+            localStorage.setItem('language','en')
+            setLanguage(languages.findIndex(x=> x.code==='en'))
+        }
+    },[])
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

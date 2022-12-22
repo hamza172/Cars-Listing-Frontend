@@ -231,7 +231,7 @@ export async function scrap(){
     console.log("asd")
     var time= new Date()
     localStorage.setItem('scrapTime',(time.getTime()).toString())
-    let response = await axios.put(process.env.SCRAPPING_APP_API_URL + '/scrapping')
+    let response = await axios.put('http://65.21.248.151:8080/scrapping')
     return true
   } catch(e){
     console.log(e)
