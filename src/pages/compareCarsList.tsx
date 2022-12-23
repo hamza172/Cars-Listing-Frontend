@@ -32,12 +32,12 @@ export default function AllCompares() {
                                         </center>
                                         <div className='row'>
                                             <div className='col-6' >
-                                            <Link to={'/get-car/'+x.car1[0].car_id} className='no-underline'>{x.car1[0].brand} {x.car1[0].generation} {x.car1[0].startofproduction} </Link>
+                                            <Link to={'/compare-two-cars/'+x.car1[0].car_id+'/'+x.car2[0].car_id} className='no-underline'>{x.car1[0].brand} {x.car1[0].generation} {x.car1[0].startofproduction} </Link>
                                                 <span className="grey-text totalcars">Power HP : {x.car1[0].power}</span>  <br/>
                                                 <span className="grey-text totalcars">Brand : {x.car1[0].brand}</span><br/>
                                             </div>
                                             <div className='col-6'>
-                                            <Link to={'/get-car/'+x.car2[0].car_id} className='no-underline'>{x.car2[0].brand} {x.car2[0].generation} {x.car2[0].startofproduction} </Link>
+                                            <Link to={'/compare-two-cars/'+x.car1[0].car_id+'/'+x.car2[0].car_id} className='no-underline'>{x.car2[0].brand} {x.car2[0].generation} {x.car2[0].startofproduction} </Link>
                                                 <span className="grey-text totalcars">Power HP : {x.car2[0].power}</span>  <br/>
                                                 <span className="grey-text totalcars">Brand : {x.car2[0].brand}</span><br/>
                                             </div>

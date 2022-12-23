@@ -9,17 +9,39 @@ import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
+import { AiOutlineShareAlt } from 'react-icons/ai';
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  EmailShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  TwitterIcon,
+  EmailIcon,
+  RedditShareButton,
+  RedditIcon,
+  WhatsappIcon,
+  } from "react-share";
+import { SettingsPhoneSharp } from '@material-ui/icons';
 
 export default function NavBar() {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const [showIcons, setShowIcons] = useState(false);
+  const shareUrl = window.location.href
   const [search, setSearch] = useState('');
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const handleSearch = () => {
       navigate('/search/'+search);
+    }
+    const toggleSocialIcons = () =>{
+      if(showIcons){
+        setShowIcons(false)
+      } else {
+        setShowIcons(true)
+      }
     }
 
     return (<>
@@ -65,5 +87,23 @@ export default function NavBar() {
                 </div>
           </Container>
         </Navbar>
+        <Button className='share-button-float' onClick={()=> toggleSocialIcons()}>Share <AiOutlineShareAlt/></Button>
+        {showIcons && <div className='socialIconsSlide'>
+          <FacebookShareButton url={shareUrl}>
+            <FacebookIcon size={40} />
+          </FacebookShareButton>
+          <TwitterShareButton url={shareUrl}>
+            <TwitterIcon size={40} />
+          </TwitterShareButton>
+          <EmailShareButton url={shareUrl}>
+            <EmailIcon size={40} />
+          </EmailShareButton>
+          <RedditShareButton url={shareUrl}>
+            <RedditIcon size={40} />
+          </RedditShareButton>
+          <WhatsappShareButton url={shareUrl}>
+            <WhatsappIcon size={40} />
+          </WhatsappShareButton>
+        </div>}
     </>)
 }

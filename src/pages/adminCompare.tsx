@@ -1,6 +1,6 @@
 import { getSearch,getComparisonCar,removeCompareCar, addCompare} from "../functions/apiCalls"
 import { useEffect,useState } from "react"
-import MaterialTable from "material-table";
+import MaterialTable from "material-table"
 import AdminNavbar from "../components/adminNavBar";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';

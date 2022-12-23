@@ -17,7 +17,7 @@ export default function AllBrands() {
                 <div className="row">
                     {(data.length>0)&&<>
                         {data.map((x)=><>
-                        <div className="archive-item col-md-2">
+                        <div className="archive-item col-lg-2 col-sm-4 col-xs-4 col-4">
                             <center >
                                 <img src={x.logo}  alt="car"/>
                                 <div className="archive-item-inner">

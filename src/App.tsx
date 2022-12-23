@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './components/navbar';
 import {  BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-image-lightbox/style.css';
 import Home from './pages/home';
 import Footer from './components/footer';
 import AllBrands from './pages/brands';
@@ -54,7 +54,7 @@ function App() {
                   <Route path="/all-compare-cars" element={<><NavBar/><AllCompares /><Footer/></>} />
                   <Route path="/compare-cars" element={<><NavBar/><CompareCars   /><Footer/></>} />
                   <Route path="/compare-two-cars/:id1/:id2" element={<><NavBar/><CompareTwoCars   /><Footer/></>} />
-                  <Route path="/get-car/:id" element={<><NavBar/><SingleCar /><Footer/></>} />
+                  <Route path="/get-car/:id/:name" element={<><NavBar/><SingleCar /><Footer/></>} />
                   <Route path="/contact-us" element={<><NavBar/><ContactUs/><Footer/></>} />
                   <Route path="/terms-of-service" element={<><NavBar/><TermsOfService/><Footer/></>} />
                   <Route path="/privacy-policy" element={<><NavBar/><PrivacyPolicy/><Footer/></>} />

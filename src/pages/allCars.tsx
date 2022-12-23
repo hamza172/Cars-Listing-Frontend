@@ -20,11 +20,11 @@ export default function AllCars() {
                         <div className="col-md-6">
                             <div className="archive-item-cars">
                                 <div className="row align-items-center">
-                                    <div className="col-md-5">
+                                    <div className="col-md-5 col-5">
                                         <img src={x.image} alt="car" className='image-card-archive' />    
                                     </div>
-                                    <div className="col-md-7">
-                                        <Link to={'/get-car/'+x.car_id} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
+                                    <div className="col-md-7 col-7">
+                                        <Link to={'/get-car/'+x.car_id+'/'+x.brand+'-'+x.generation+'-'+x.startofproduction} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
                                         <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
                                         <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
                                         <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>

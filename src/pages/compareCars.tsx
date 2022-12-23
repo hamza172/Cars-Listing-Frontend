@@ -107,7 +107,7 @@ function SearchCar (){
                     <img src={data1.images[0].image} alt="car" className='single-image-card-archive' />         
                 </div>
                 <div className="pageCon ">
-                            <div className="page-title"><span style={{float:"left"}}>General</span> </div>
+                            <div className="page-title  blue-bg"><span style={{float:"left"}}>General</span> </div>
                             <div className="p-3">
                                 <div className="">
                                     <div className="row row-techsheet">
@@ -150,7 +150,7 @@ function SearchCar (){
                             </div>
                         </div>
                         <div className="pageCon ">
-                            <div className="page-title"><span style={{float:"left"}}>Performance</span> </div>
+                            <div className="page-title  blue-bg"><span style={{float:"left"}}>Performance</span> </div>
                             <div className="p-3">
                                 <div className="">
                                     <div className="row row-techsheet">
@@ -189,7 +189,7 @@ function SearchCar (){
                             </div>
                         </div>
                         <div className="pageCon ">
-                            <div className="page-title"><span style={{float:"left"}}>Dimensions</span> </div>
+                            <div className="page-title  blue-bg"><span style={{float:"left"}}>Dimensions</span> </div>
                             <div className="p-3">
                                 <div className="">
                                     <div className="row row-techsheet">
@@ -228,7 +228,7 @@ function SearchCar (){
                             </div>
                         </div>
                         <div className="pageCon ">
-                            <div className="page-title"><span style={{float:"left"}}>Engine</span> </div>
+                            <div className="page-title  blue-bg"><span style={{float:"left"}}>Engine</span> </div>
                             <div className="p-3">
                                 <div className="">
                                     <div className="row row-techsheet">
@@ -283,9 +283,9 @@ function SearchCar (){
                             </div>
                         </div>
                         <div className="pageCon ">
-                            <div className="page-title"><span style={{float:"left"}}>Electric</span> </div>
+                            <div className="page-title  blue-bg"><span style={{float:"left"}}>Electric</span> </div>
                             <div className="p-3">
-                                <div className="p-4">
+                                <div className="">
                                     <div className="row row-techsheet">
                                         <div className="col-6 blue-text">Battery capacity</div>
                                         <div className="col-6">{data1.batterycapacity}</div>
@@ -330,7 +330,7 @@ function SearchCar (){
                             </div>
                         </div>
                         <div className="pageCon ">
-                            <div className="page-title"><span style={{float:"left"}}>Drivetrain</span> </div>
+                            <div className="page-title  blue-bg"><span style={{float:"left"}}>Drivetrain</span> </div>
                             <div className="p-3">
                                 <div className="">
                                     <div className="row row-techsheet">
@@ -377,7 +377,7 @@ function SearchCar (){
                             </div>
                         </div>
                         <div className="pageCon ">
-                            <div className="page-title"><span style={{float:"left"}}>Space</span> </div>
+                            <div className="page-title  blue-bg"><span style={{float:"left"}}>Space</span> </div>
                             <div className="p-3">
                                 <div className="">
                                     <div className="row row-techsheet">
