@@ -1,15 +1,16 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Offcanvas from 'react-bootstrap/Offcanvas';
 import SwitchLanguage from './langSwitch';
 import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineShareAlt } from 'react-icons/ai';
+import { AiFillHome } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
+import { RiDonutChartLine, RiLayoutMasonryFill, RiStarFill } from "react-icons/ri";
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -23,6 +24,7 @@ import {
   WhatsappIcon,
   } from "react-share";
 import { SettingsPhoneSharp } from '@material-ui/icons';
+import { translation } from '../translation';
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -30,9 +32,13 @@ export default function NavBar() {
   const [showIcons, setShowIcons] = useState(false);
   const shareUrl = window.location.href
   const [search, setSearch] = useState('');
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
+    const handleMenu = () => {
+      if(show)
+      setShow(false)
+      else
+      setShow(true)
+    }
+  
     const handleSearch = () => {
       navigate('/search/'+search);
     }
@@ -48,46 +54,27 @@ export default function NavBar() {
         <Navbar key='expand' bg="dark" expand={false}>
           <Container >
             <div className="d-flex align-items-center">
-          <Navbar.Offcanvas show={show} onHide={handleClose} 
-              placement="start"
-            >
-              <Offcanvas.Header closeButton>
-                <Offcanvas.Title >
-                SOLNCAR
-                </Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-start flex-grow-1 pe-3">
-                  <Link to='/' className='no-underline'>Home</Link>
-                  <Link to='/all-cars' className='no-underline'>All Cars</Link>
-                  <Link to='/all-brands' className='no-underline'>All Brands</Link>
-                  <Link to='/compare-cars' className='no-underline'>Compare Cars</Link>
-                  <Link to='/hot-cars' className='no-underline'>Hot Cars</Link>
-                  <Link to='/all-electric-cars' className='no-underline'>Electric Cars</Link>
-                  <Link to='/all-hybrid-cars' className='no-underline'>Hybrid Cars</Link>
-                  <Link to='/contact-us' className='no-underline'>Contact Us</Link>
-                </Nav>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
-            <Navbar.Toggle onClick={handleShow}/>
+            <div onClick={()=>{handleMenu()}} className='menu-icon cursor'><span className='menubar' style={{color:"white",fontSize:'24px'}}><AiOutlineMenu/></span></div>
+            
             <Link to='/' className='no-underline'><Navbar.Brand className='white-text'>SOLNCAR</Navbar.Brand></Link>
             </div>
             <div className="d-flex align-items-center">
             <Form className="d-flex" onSubmit={handleSearch}>
                   <Form.Control
                     type="search"
-                    placeholder="Search"
+                    placeholder={translation.search[localStorage.getItem("language") || 'Search']}
                     onChange={(e) => setSearch(e.target.value)}
                     className="me-2 searchbar-nav"
                     aria-label="Search"
                   />
-                  <Button className="search-button-navbar"><BsSearch/></Button>
+                  <Button className="search-button-navbar noHoverButton"><BsSearch/></Button>
                 </Form>
                     <SwitchLanguage/>
                 </div>
-          </Container>
+                
+          </Container>  
         </Navbar>
-        <Button className='share-button-float' onClick={()=> toggleSocialIcons()}>Share <AiOutlineShareAlt/></Button>
+        <Button className='share-button-float' onClick={()=> toggleSocialIcons()}>{translation.share[localStorage.getItem("language") || 'Share']} <AiOutlineShareAlt/></Button>
         {showIcons && <div className='socialIconsSlide'>
           <FacebookShareButton url={shareUrl}>
             <FacebookIcon size={40} />
@@ -105,5 +92,14 @@ export default function NavBar() {
             <WhatsappIcon size={40} />
           </WhatsappShareButton>
         </div>}
+        {(show) && <div className='menuBox'>
+              <Link to='/' className='no-underline grey-text'><span className='navbar-icons'><AiFillHome/></span>{translation.home[localStorage.getItem("language") || 'Home']}</Link>
+              <Link to='/all-brands' className='no-underline grey-text'><span className='navbar-icons'><RiLayoutMasonryFill/></span>{translation.allBrands[localStorage.getItem("language") || 'All Brands']}</Link>
+              <Link to='/all-electric-cars' className='no-underline grey-text'><span className='navbar-icons'><RiStarFill/></span>{translation.topElectricCars[localStorage.getItem("language") || 'Top Electric Cars']}</Link>
+              <Link to='/all-cars' className='no-underline grey-text'><span className='navbar-icons'><RiStarFill/></span>{translation.allCars[localStorage.getItem("language") || 'Top Cars']}</Link>
+              <Link to='/hot-cars' className='no-underline grey-text'><span className='navbar-icons'><RiStarFill/></span>{translation.hotCars[localStorage.getItem("language") || 'Hot Cars']}</Link>
+              <Link to='/all-hybrid-cars' className='no-underline grey-text'><span className='navbar-icons'><RiStarFill/></span>{translation.topHybridCars[localStorage.getItem("language") || 'Top Hybrid Cars']}</Link>
+              <Link to='/contact-us' className='no-underline grey-text'><span className='navbar-icons'><RiDonutChartLine/></span>{translation.contactUs[localStorage.getItem("language") || 'Contact Us']}</Link>
+            </div>}
     </>)
 }

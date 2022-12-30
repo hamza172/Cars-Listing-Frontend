@@ -68,7 +68,7 @@ a{
 }
 .row-techsheet {
   background: white;
-  margin: 5px;
+  margin: 10px;
   padding: 5px;
 }
 .navbar-toggler-icon{
@@ -81,6 +81,17 @@ a{
 }
 .cursor{
   cursor: pointer;
+}
+.menuBox {
+  width: 200px;
+  background: white;
+  padding: 20px;
+  display: grid;
+  position: absolute;
+  top: 60px;
+  z-index: 10;
+  line-height: 35px;
+  font-size: 18px;
 }
 .share-button-float {
   padding: 5px 25px !important;
@@ -116,7 +127,31 @@ a.navbar-brand {
   min-height: 100vh;
 }
 .grey-text{
-  color: #4e4e4e !important;
+  color: #464646 !important;
+}
+.compare_images img{
+  min-height: 200px;
+}
+.compare-1st-image{
+  clip-path: polygon(0 0, 0 100%, 85% 100%, 100% 0);
+  width: 53.5% !important;
+}
+.compare-2nd-image{
+  clip-path: polygon(15% 0, 0 100%, 100% 100%, 100% 0);
+  margin-left: -7% !important;
+  width: 53.5% !important;
+}
+.row-comapre {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+}
+.row-comapre-p4 {
+  width: 33%;
+  min-width: 350px;
+}
+.lightgrey-text{
+  color: #808080 !important;
 }
 .white-text{
   color: #fff !important;
@@ -125,12 +160,12 @@ a.navbar-brand {
   box-shadow: none !important;
 }
 .pageCon {
-  margin: 50px 0px;
+  margin: 30px 0px;
   background: #F6F6F6;
   padding: 0px;
 }
 .archive{
-  padding: 40px;
+  padding: 15px;
 }
 .archive-item{
   border-radius: 5px;
@@ -143,6 +178,28 @@ a.navbar-brand {
   border-radius: 5px;
   box-shadow: 0px 5px 5px 0px #eaeaea;
 }
+.social-icons-home {
+  position: relative;
+  display: grid;
+  top: -165px;
+  left: 10px;
+  height: 0px;
+  width: 0px;
+  color: white !important;
+}
+.social-icons-home a{
+  color: white !important;
+  padding: 5px;
+  z-index: 12;
+}
+.archive-item-cars-single{
+  background: #f6f6f6;
+  margin: 0px 0px;
+  padding: 0px 10px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 5px 0px #eaeaea;
+
+}
 img.image-card-archive {
   width: 100%;
   height: 150px;
@@ -151,10 +208,24 @@ img.image-card-archive {
 }
 .single-image-card-archive{
   width: 100%;
-  height: 200px;
+  height: 250px;
   object-fit: cover;
   border-radius: 5px;
   
+}
+.menu-icon {
+  padding-right: 20px;
+}
+span.navbar-icons {
+  color: #FDC101;
+  font-size: 18px;
+  padding-right: 10px !important;
+}
+.menuBox a:hover{
+  color:#589bff !important
+}
+span.navbar-icons svg{
+  margin-bottom: 7px;
 }
 .archive-item img{
   border-radius: 5px 5px 0px 0px;
@@ -174,8 +245,20 @@ img.image-card-archive {
 }
 .archive-item-4 img{
   width: 100%;
-  height: 200px;
+  height: 160px;
   object-fit: cover;
+}
+.archive-item-4:hover{
+  opacity: 0.7;
+  transition: 0.3s;
+}
+.archive-item-cars:hover{
+  opacity: 0.7;
+  transition: 0.3s;
+}
+.archive-item:hover{
+  opacity: 0.7;
+  transition: 0.3s;
 }
 .archive-item-4{
   border-radius: 0px;
@@ -183,9 +266,9 @@ img.image-card-archive {
 }
 .page-title {
   width: 100%;
-  padding: 20px 40px;
+  padding: 10px 20px;
   background: #212529;
-  min-height: 75px;
+  min-height: 50px;
   color: white;
   font-size: 21px;
   font-weight: 700;
@@ -206,7 +289,7 @@ a.no-underline {
 .image-holder-single {
   display: flex;
   overflow-x: scroll;
-  padding: 30px;
+  /* padding: 10px; */
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -260,8 +343,10 @@ button.btn.btn-primary {
 .vs-image{ 
   width: 100% !important;
   height: 100% !important;
-  max-width: 50px !important;
+  max-width: 75px !important;
   margin-top: -260px;
+  z-index: 2 !important;
+  position: relative;
 }
 .blue-bg{
   background-color: #3C86F5;
@@ -269,6 +354,10 @@ button.btn.btn-primary {
 .btn:hover{
   background-color: #3C86F5 !important;
   border-color: #3C86F5 !important;
+}
+.noHoverButton.btn:hover{
+  background-color: #3C86F500 !important;
+  border-color: #3C86F500 !important;
 }
 .socialIconsSlide{
   position: fixed;
@@ -286,6 +375,10 @@ button.btn.btn-primary {
   .image-card-archive{
     height: 175px;
     margin-bottom: 20px;
+  }
+  .vs-image{
+    max-width: 60px !important;
+    margin-top: -210px;
   }
   .carousel-inner,.carousel,.carousel-item {
     min-height: 75vh !important;

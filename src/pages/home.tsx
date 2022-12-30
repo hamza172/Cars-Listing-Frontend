@@ -3,6 +3,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import Button from 'react-bootstrap/esm/Button';
 import { Link } from 'react-router-dom';
 import { AiOutlineDoubleLeft,AiOutlineDoubleRight } from 'react-icons/ai';
+import { FaFacebookF,FaTwitter,FaYoutube,FaInstagram } from 'react-icons/fa';
+import { translation } from '../translation';
 import { getHomeElectricCars, getHomeTopCars, getHomeBrands, getHomeComparisonCar, getHomeHybridCars, getHomeHotCars, getHomeLatestCars } from "../functions/apiCalls"
 
 export default function Home() {
@@ -13,7 +15,6 @@ export default function Home() {
     const [hotCars, sethotCars] =  useState<any[]>([])
     const [latestCars, setLatestCars] =  useState<any[]>([])
     const [compareCars, setCompareCars] =  useState<any[]>([])
-    
 
     useEffect(()=>{ 
         getHomeElectricCars().then((x)=>setElectricCars(x || []))
@@ -43,85 +44,92 @@ export default function Home() {
                 </Carousel.Caption>
             </Carousel.Item>
             </Carousel>
+            <div className='social-icons-home'>
+                <a href='https://www.facebook.com'><FaFacebookF/></a>
+                <a href='https://www.twitter.com'><FaTwitter/></a>
+                <a href='https://www.youtube.com'><FaYoutube/></a>
+                <a href='https://www.instagram.com'><FaInstagram/></a>
+            </div>
          </div>
          <div className="container">
-        <div className="pageCon">
-            <div className="page-title"><span style={{float:"left"}}>Top Electric Cars</span> <span  style={{float:"right"}}><Link to="/all-electric-cars" className='no-underline yellow-text'>See More &gt;&gt;</Link></span></div>
+        <div className="pageCon" style={{marginBottom:"0px"}}>
+            <div className="page-title"><span style={{float:"left"}}>{translation.topElectricCars[localStorage.getItem("language") || 'Top Electric Cars']} </span> <span  style={{float:"right"}}><Link to="/all-electric-cars" className='no-underline yellow-text'>{translation.seeMore[localStorage.getItem("language") || 'See More']} <AiOutlineDoubleRight style={{marginRight:"10px"}}/></Link></span></div>
             <div className="archive">
                 <div className="row">
                     {(electricCars.length>0)&&<>
                         {electricCars.map((x)=><>
                         <div className="archive-item-4 col-md-3 col-6">
-                                <img src={x.image}  alt="car"/>
+                            <Link to={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline grey-text'>
+                                <img src={x.image || "https://qesot.com/images/placeholder-img.png"}  alt="car"/>
                                 <div className="archive-item-inner-4">
-                                    <Link to={'/get-car/'+x.car_id+'/'+x.brand+'-'+x.generation+'-'+x.startofproduction} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
-                                    <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
-                                    <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
-                                </div>
+                                    <h4 className='blue-text'>{x.brand} {x.models} {x.generation} {x.startofproduction} </h4>    
+                                    <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power ? x.power : x.systempower}</span>  <br/>
+                                    <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} :</span><span className='lightgrey-text'>{x.brand}</span><br/>
+                                </div>    
+                            </Link>
                         </div>
                     </>)}
                     </>}
                 </div>
             </div>
-            <div className="page-title"><span style={{float:"left"}}>Compare Cars</span> <span  style={{float:"right"}}><Link to="/all-compare-cars"  className='no-underline yellow-text'>See More &gt;&gt;</Link></span></div>
+            <div className="page-title"><span style={{float:"left"}}>{translation.compareCars[localStorage.getItem("language") || 'Popular Compare Cars']}</span> <span  style={{float:"right"}}><Link to="/all-compare-cars"  className='no-underline yellow-text'>{translation.seeMore[localStorage.getItem("language") || 'See More']} <AiOutlineDoubleRight style={{marginRight:"10px"}}/></Link></span></div>
                 <div className="archive">
                     <div className="row">
                         {(compareCars.length>0)&&<>
                             {compareCars.map((x)=><>
                             <div className="archive-item-4 col-md-6">
-                                    <div className='row'>
-                                        <div className='col-6' >
-                                            <img src={x.car1[0].image}  alt="car"/>
-                                        </div>
-                                        <div className='col-6'>
-                                            <img src={x.car2[0].image}  alt="car"/>
-                                        </div>
+                            <Link to={'/compare-two-cars/'+x.car1[0].car_id+'/'+x.car2[0].car_id} className='no-underline'>
+                                    <div className='compare_images'>
+                                            <img src={x.car1[0].image || "https://qesot.com/images/placeholder-img.png"} className="compare-1st-image"  alt="car"/>
+                                            <img src={x.car2[0].image || "https://qesot.com/images/placeholder-img.png"} className="compare-2nd-image" alt="car"/>
                                     </div>
                                     <div className="archive-item-inner-4">
                                      <center>
-                                        <img className='vs-image' src="/images/vs.png" alt="vs"/>
-                                        </center>
+                                        <img  className='vs-image' src="/images/vs.png" alt="vs"/>
+                                        </center> <h4 className='blue-text'>{x.car1[0].brand} {x.models} {x.car1[0].generation} {x.car1[0].startofproduction} VS {x.car2[0].brand} {x.models} {x.car2[0].generation} {x.car2[0].startofproduction}</h4>
+                                    
                                         <div className='row'>
                                             <div className='col-6' >
-                                            <Link to={'/compare-two-cars/'+x.car1[0].car_id+'/'+x.car2[0].car_id} className='no-underline'>{x.car1[0].brand} {x.car1[0].generation} {x.car1[0].startofproduction} </Link><br/>
-                                                <span className="grey-text totalcars">Power HP : {x.car1[0].power}</span>  <br/>
-                                                <span className="grey-text totalcars">Brand : {x.car1[0].brand}</span><br/>
+                                                <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} :</span><span className='lightgrey-text'> {x.car1[0].power}</span>  <br/>
+                                                <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.car1[0].brand}</span><br/>
                                             </div>
                                             <div className='col-6'>
-                                            <Link to={'/compare-two-cars/'+x.car1[0].car_id+'/'+x.car2[0].car_id} className='no-underline'>{x.car2[0].brand} {x.car2[0].generation} {x.car2[0].startofproduction} </Link><br/>
-                                                <span className="grey-text totalcars">Power HP : {x.car2[0].power}</span>  <br/>
-                                                <span className="grey-text totalcars">Brand : {x.car2[0].brand}</span><br/>
+                                                <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.car2[0].power}</span>  <br/>
+                                                <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.car2[0].brand}</span><br/>
                                             </div>
                                         </div>
                                     </div>
+                                    </Link>
                             </div>
                         </>)}
                         </>}
                         </div>
                     </div>    
-                    <center><Link to='/compare-cars/' className='no-underline'><Button><AiOutlineDoubleRight style={{marginRight:"10px"}}/>  Choose Cars to Compare<AiOutlineDoubleLeft style={{marginLeft:"10px"}}/></Button></Link></center> 
+                    <center><Link to='/compare-cars/' className='no-underline'><Button><AiOutlineDoubleRight style={{marginRight:"10px"}}/>{translation.chooseCarsToCompare[localStorage.getItem("language") || 'Choose Cars to Compare']}<AiOutlineDoubleLeft style={{marginLeft:"10px"}}/></Button></Link></center> 
             {/* ------------------------ */}
-            <div className="pageCon">
-                <div className="page-title"><span style={{float:"left"}}>Top Cars</span> <span  style={{float:"right"}}><Link to="/all-cars" className='no-underline yellow-text'>See More &gt;&gt;</Link></span></div>
+            <div className="pageCon" style={{marginBottom:"0px"}}>
+                <div className="page-title"><span style={{float:"left"}}>{translation.topCars[localStorage.getItem("language") || 'Top Cars']}</span> <span  style={{float:"right"}}><Link to="/all-cars" className='no-underline yellow-text'>{translation.seeMore[localStorage.getItem("language") || 'See More']} <AiOutlineDoubleRight style={{marginRight:"10px"}}/></Link></span></div>
                 <div className="archive">
                     <div className="row">
                         {(topCars.length>0)&&<>
                             {topCars.map((x)=><>
                             <div className="col-md-6">
+                            <Link to={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline'>
                                 <div className="archive-item-cars">
                                     <div className="row align-items-center">
                                         <div className="col-md-5 col-5">
-                                            <img src={x.image} alt="car" className='image-card-archive' />    
+                                            <img src={x.image || "https://qesot.com/images/placeholder-img.png"} alt="car" className='image-card-archive' />    
                                         </div>
                                         <div className="col-md-7 col-7">
-                                            <Link to={'/get-car/'+x.car_id+'/'+x.brand+'-'+x.generation+'-'+x.startofproduction} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
-                                            <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
-                                            <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
-                                            <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
-                                            <span className="grey-text totalcars">Maximum speed : {x.maximumspeed}</span>  <br/>  
+                                            <h4 className='blue-text'>{x.brand} {x.models} {x.generation} {x.startofproduction} </h4>
+                                            <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.brand}</span><br/>
+                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Accelerationkmh[localStorage.getItem("language") || 'Acceleration 0 - 100 km/h']} : </span><span className='lightgrey-text'>{x.acceleration100}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Maximumspeed[localStorage.getItem("language") || 'Maximum speed']} : </span><span className='lightgrey-text'>{x.maximumspeed}</span>  <br/>  
                                         </div>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
                             
                         </>)}
@@ -130,20 +138,22 @@ export default function Home() {
                     </div>    
 
                     {/* ------------------------ */}
-                    <div className="pageCon">
-                        <div className="page-title"><span style={{float:"left"}}>Brands</span> <span  style={{float:"right"}}><Link to="/all-brands" className='no-underline yellow-text'>See More &gt;&gt;</Link></span></div>
+                    <div className="pageCon" style={{marginBottom:"0px",marginTop:"0px"}}>
+                        <div className="page-title"><span style={{float:"left"}}>{translation.carBrands[localStorage.getItem("language") || 'Brands']}</span> <span  style={{float:"right"}}><Link to="/all-brands" className='no-underline yellow-text'>{translation.seeMore[localStorage.getItem("language") || 'See More']}<AiOutlineDoubleRight style={{marginRight:"10px"}}/></Link></span></div>
                         <div className="archive">
                             <div className="row">
                                 {(brands.length>0)&&<>
                                     {brands.map((x)=><>
                                     <div className="archive-item col-lg-2 col-sm-4 col-xs-4 col-4">
+                                    <Link to={'/brands-models/'+x.name} className="no-underline white-text">
                                         <center >
                                             <img src={x.logo}  alt="car"/>
                                             <div className="archive-item-inner">
                                                 <h4>{x.name}</h4>
-                                                <span className="yellow-text totalcars">Total Cars: {x.cars}</span>    
+                                                <span className="yellow-text totalcars">{translation.totalCars[localStorage.getItem("language") || 'Total Cars']} : {x.cars}</span>    
                                             </div>
                                             </center>
+                                        </Link>
                                     </div>
                                 </>)}
                                 </>}
@@ -151,56 +161,59 @@ export default function Home() {
                         </div>    
                     </div>  
                     {/* ------------------------ */}
-            <div className="pageCon">
-                <div className="page-title"><span style={{float:"left"}}>Top Hybrid Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="/all-hybrid-cars">See More &gt;&gt;</Link></span></div>
+            <div className="pageCon" style={{marginBottom:"0px",marginTop:"0px"}}>
+                <div className="page-title"><span style={{float:"left"}}>{translation.topHybridCars[localStorage.getItem("language") || 'Top Hybrid Cars']}</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="/all-hybrid-cars">{translation.seeMore[localStorage.getItem("language") || 'See More']} <AiOutlineDoubleRight style={{marginRight:"10px"}}/></Link></span></div>
                 <div className="archive">
                     <div className="row">
                         {(hybrid.length>0)&&<>
                             {hybrid.map((x)=><>
-                            <div className="col-md-6">
+                                <div className="col-md-6">
+                            <Link to={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline'>
                                 <div className="archive-item-cars">
                                     <div className="row align-items-center">
                                         <div className="col-md-5 col-5">
-                                            <img src={x.image} alt="car" className='image-card-archive' />    
+                                            <img src={x.image|| "https://qesot.com/images/placeholder-img.png"} alt="car" className='image-card-archive' />    
                                         </div>
                                         <div className="col-md-7 col-7">
-                                            <Link to={'/get-car/'+x.car_id+'/'+x.brand+'-'+x.generation+'-'+x.startofproduction} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
-                                            <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
-                                            <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
-                                            <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
-                                            <span className="grey-text totalcars">Maximum speed : {x.maximumspeed}</span>  <br/>  
+                                            <h4 className='blue-text'>{x.brand} {x.models} {x.generation} {x.startofproduction} </h4>
+                                            <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.brand}</span><br/>
+                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Accelerationkmh[localStorage.getItem("language") || 'Acceleration 0 - 100 km/h']} : </span><span className='lightgrey-text'>{x.acceleration100}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Maximumspeed[localStorage.getItem("language") || 'Maximum speed']} : </span><span className='lightgrey-text'>{x.maximumspeed}</span>  <br/>  
                                         </div>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
-                            
                         </>)}
                         </>}
                         </div>
                     </div>  
                     </div>
                     {/* ------------------------ */}
-            <div className="pageCon">
-                <div className="page-title"><span style={{float:"left"}}>Hot Cars</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="/hot-cars">See More &gt;&gt;</Link></span></div>
+            <div className="pageCon" style={{marginBottom:"0px",marginTop:"0px"}}>
+                <div className="page-title"><span style={{float:"left"}}>{translation.hotCars[localStorage.getItem("language") || 'Hot Cars']}</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="/hot-cars">{translation.seeMore[localStorage.getItem("language") || 'See More']} <AiOutlineDoubleRight style={{marginRight:"10px"}}/></Link></span></div>
                 <div className="archive">
                     <div className="row">
                         {(hotCars.length>0)&&<>
                             {hotCars.map((x)=><>
-                            <div className="col-md-6">
+                                <div className="col-md-6">
+                            <Link to={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline'>
                                 <div className="archive-item-cars">
                                     <div className="row align-items-center">
                                         <div className="col-md-5 col-5">
-                                            <img src={x.image} alt="car" className='image-card-archive' />    
+                                            <img src={x.image|| "https://qesot.com/images/placeholder-img.png"} alt="car" className='image-card-archive' />    
                                         </div>
                                         <div className="col-md-7 col-7">
-                                            <Link to={'/get-car/'+x.car_id+'/'+x.brand+'-'+x.generation+'-'+x.startofproduction} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
-                                            <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
-                                            <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
-                                            <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
-                                            <span className="grey-text totalcars">Maximum speed : {x.maximumspeed}</span>  <br/>  
+                                            <h4 className='blue-text'>{x.brand} {x.models} {x.generation} {x.startofproduction} </h4>
+                                            <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.brand}</span><br/>
+                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Accelerationkmh[localStorage.getItem("language") || 'Acceleration 0 - 100 km/h']} : </span><span className='lightgrey-text'>{x.acceleration100}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Maximumspeed[localStorage.getItem("language") || 'Maximum speed']} :</span><span className='lightgrey-text'> {x.maximumspeed}</span>  <br/>  
                                         </div>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
                             
                         </>)}
@@ -209,20 +222,22 @@ export default function Home() {
                     </div>  
                     </div>    
                     {/* --------------- */}
-                    <div className="pageCon">
-                <div className="page-title"><span style={{float:"left"}}>Discover Latest Cars</span> </div>
+                    <div className="pageCon" style={{marginBottom:"0px",marginTop:"0px"}}>
+                <div className="page-title"><span style={{float:"left"}}>{translation.discoverLatestCars[localStorage.getItem("language") || 'Discover Latest Cars']}</span> <span  style={{float:"right"}}><Link to="/all-cars" className='no-underline yellow-text'>{translation.seeMore[localStorage.getItem("language") || 'See More']} <AiOutlineDoubleRight style={{marginRight:"10px"}}/></Link></span></div>
                 <div className="archive">
                     <div className="row">
                        
                         {(latestCars.length>0)&&<>
                         {latestCars.map((x)=><>
                         <div className="archive-item-4 col-md-3 col-6">
-                                <img src={x.image}  alt="car"/>
+                            <Link to={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline grey-text'>
+                                <img src={x.image || "https://qesot.com/images/placeholder-img.png"}  alt="car"/>
                                 <div className="archive-item-inner-4">
-                                    <Link to={'/get-car/'+x.car_id+'/'+x.brand+'-'+x.generation+'-'+x.startofproduction} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
-                                    <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
-                                    <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
-                                </div>
+                                    <h4 className='blue-text'>{x.brand} {x.models} {x.generation} {x.startofproduction} </h4>    
+                                    <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power}</span>  <br/>
+                                    <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.brand}</span><br/>
+                                </div>    
+                            </Link>
                         </div>
                     </>)}
                     </>}

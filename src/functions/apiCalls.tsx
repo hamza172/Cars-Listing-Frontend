@@ -173,6 +173,24 @@ export async function getSearch(key:String){
     console.log(e)
   }
 }
+export async function getCarsByYear(key:String){
+  try{
+    let lang = localStorage.getItem('language')
+    let response = await axios.get(process.env.REACT_APP_API_URL + '/cars/year?lang='+lang+'&year='+key)
+    return response.data
+  } catch(e){
+    console.log(e)
+  }
+}
+export async function getYears(){
+  try{
+    let response = await axios.get(process.env.REACT_APP_API_URL + '/cars/yearlist')
+    return response.data
+
+  } catch(e){
+    console.log(e)
+  }
+}
 export async function getModel(key:String){
   try{
     let lang = localStorage.getItem('language')

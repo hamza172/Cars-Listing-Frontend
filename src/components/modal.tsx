@@ -8,7 +8,7 @@ export default function ModelGallery(props){
     const [images,setImages] = useState(props.images)
     return(<>
                 {images.map((x,index)=>
-                   <img src={x.image} className="cursor" onClick={() => {
+                   <img src={x.image || "https://qesot.com/images/placeholder-img.png"} className="cursor" onClick={() => {
                         setPhotoIndex(index)
                         setIsOpen(true)
                     }} />
@@ -24,10 +24,10 @@ export default function ModelGallery(props){
                     window.dispatchEvent(new Event('resize'));
                   }}
                 onMovePrevRequest={() =>
-                    setPhotoIndex(((photoIndex - 1) % images.length)||0)
+                    setPhotoIndex(((photoIndex + images.length - 1) % images.length))
                 }
                 onMoveNextRequest={() =>
-                    setPhotoIndex(((photoIndex + 1) % images.length)||0)
+                    setPhotoIndex(((photoIndex + 1) % images.length))
                 }
             /></>}
     </>)

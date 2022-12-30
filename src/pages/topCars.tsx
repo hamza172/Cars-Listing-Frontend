@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Loader from "../components/loading"
 import { getAllCars } from "../functions/apiCalls"
+import { translation } from "../translation"
 
 export default function AllTopCars() {
     const [data, setData] =  useState<any[]>([])
@@ -17,22 +18,24 @@ export default function AllTopCars() {
                 <div className="row">
                     {(data.length>0)&&<>
                         {data.map((x)=><>
-                        <div className="col-md-6">
-                            <div className="archive-item-cars">
-                                <div className="row align-items-center">
-                                    <div className="col-md-5">
-                                        <img src={x.image} alt="car" className='image-card-archive' />    
-                                    </div>
-                                    <div className="col-md-7">
-                                        <Link to={'/get-car/'+x.car_id+'/'+x.brand+'-'+x.generation+'-'+x.startofproduction} className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </Link><br/>
-                                        <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
-                                        <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
-                                        <span className="grey-text totalcars">Acceleration 0 - 100 km/h : {x.acceleration100}</span>  <br/>
-                                        <span className="grey-text totalcars">Maximum speed : {x.maximumspeed}</span>  <br/>  
+                            <div className="col-md-6">
+                            <Link to={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline'>
+                                <div className="archive-item-cars">
+                                    <div className="row align-items-center">
+                                        <div className="col-md-5 col-5">
+                                            <img src={x.image || "https://qesot.com/images/placeholder-img.png"} alt="car" className='image-card-archive' />    
+                                        </div>
+                                        <div className="col-md-7 col-7">
+                                            <h4 className='blue-text'>{x.brand} {x.generation} {x.startofproduction} </h4>
+                                            <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.brand}</span><br/>
+                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power ? x.power : x.systempower}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Accelerationkmh[localStorage.getItem("language") || 'Acceleration 0 - 100 km/h']} : </span><span className='lightgrey-text'>{x.acceleration100}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Maximumspeed[localStorage.getItem("language") || 'Maximum speed']} : </span><span className='lightgrey-text'>{x.maximumspeed}</span>  <br/>  
+                                        </div>
                                     </div>
                                 </div>
+                                </Link>
                             </div>
-                        </div>
                         
                     </>)}
                     </>}

@@ -6,15 +6,15 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { BsSearch } from 'react-icons/bs';
 import Form from 'react-bootstrap/Form';
+import { translation } from "../translation";
+import { MiniLoader } from "../components/loading";
 
 
 export default function AdminCompare (){
     const [data, setData] =  useState<any[]>([])
     useEffect(()=>{ 
-        console.log("calling")
         getComparisonCar().then((x)=>{setData(x)})
     },[])
-    console.log(data)
 
     const handledelete = (id) =>{
         removeCompareCar(id)
@@ -76,10 +76,12 @@ function AddComparison(){
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [search,setSearch] = useState('')
+    const [searchLoading, setSearchLoading] = useState(false);
     const [data, setData] =  useState<any[]>([])
     const [selectedCars, setCars] =  useState<any[]>([])
     const handleSearch = (event) => {
         event.preventDefault();
+        setSearchLoading(true)
         getSearch(search).then((x)=>setData(x))
     }
     
@@ -110,7 +112,7 @@ function AddComparison(){
                   <Form.Control
                     type="search"
                     style={{width:"100%"}}
-                    placeholder="Search"
+                    placeholder={translation.search[localStorage.getItem("language") || 'Search']}
                     onChange={(e) => setSearch(e.target.value)}
                     className="me-2 searchbar-nav"
                     aria-label="Search"
@@ -118,7 +120,7 @@ function AddComparison(){
                   <Button className="search-button-navbar" type='submit'><BsSearch/></Button>
                 </Form>
             </>
-                {(data.length>0)&&<>
+                {(data.length>0)?<>
                     {data.map((x)=><>
                     <div>
                         <div className="archive-item-cars">
@@ -128,8 +130,8 @@ function AddComparison(){
                                 </div>
                                 <div className="col-md-7">
                                     <span className='no-underline'>{x.brand} {x.generation} {x.startofproduction} </span><br/>
-                                    <span className="grey-text totalcars">Brand : {x.brand}</span><br/>
-                                    <span className="grey-text totalcars">Power HP : {x.power}</span>  <br/>
+                                    <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : {x.brand}</span><br/>
+                                    <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : {x.power ? x.power : x.systempower}</span>  <br/>
                                     <Button onClick={()=>selectCar(x.car_id)}>Select</Button>
                                 </div>
                             </div>
@@ -137,7 +139,7 @@ function AddComparison(){
                     </div>
                     
                 </>)}
-                </>}
+                </>:<>{searchLoading && <><MiniLoader/></>}</>}
                 </Modal.Body>
             <Modal.Footer>
             
