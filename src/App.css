@@ -351,6 +351,19 @@ button.btn.btn-primary {
 .blue-bg{
   background-color: #3C86F5;
 }
+button.compareCarButtonBlue.btn.btn-primary:hover{
+  background-color: #3C86F5 !important;
+  border-color: #3C86F5 !important;
+  color: white !important;
+}
+button.compareCarButtonBlue.btn.btn-primary{
+  background-color: white !important;
+  border-color: #3C86F5 !important;
+  border-radius: 5px;
+  border-width: 2px;
+  font-weight: 600 !important;
+  color:#3C86F5 !important;
+}
 .btn:hover{
   background-color: #3C86F5 !important;
   border-color: #3C86F5 !important;

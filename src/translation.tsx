@@ -45,7 +45,7 @@ export const translation = {
         pl:"Wybierz samochody do porównania",
     },
     selectCar:{
-        en: "Select Car",
+        en: "Add a Car",
         fr:"Sélectionnez la voiture",
         es:"Seleccionar coche",
         ru:"Выберите автомобиль",

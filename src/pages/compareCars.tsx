@@ -8,7 +8,7 @@ import { translation } from "../translation";
 import { BsSearch } from 'react-icons/bs';
 import Form from 'react-bootstrap/Form';
 import { getHomeComparisonCar } from '../functions/apiCalls';
-import { AiOutlineDoubleRight } from 'react-icons/ai';
+import { AiOutlineDoubleRight, AiOutlinePlus } from 'react-icons/ai';
 
 export default function CompareCars (){
     const [compareCars, setCompareCars] =  useState<any[]>([])
@@ -138,8 +138,9 @@ function SearchCar (){
     }
 
     return (<>
-        <Button variant="primary" onClick={handleShow}>
-        {translation.selectCar[localStorage.getItem("language") || 'Select Car']}
+        <Button className='compareCarButtonBlue' variant="primary" onClick={handleShow}>
+            <AiOutlinePlus/>
+        {translation.selectCar[localStorage.getItem("language") || 'Add A Car']}
         </Button>
 
         {data1.brand ? <>
