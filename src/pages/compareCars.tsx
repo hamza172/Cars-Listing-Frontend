@@ -270,7 +270,7 @@ function SearchCar (){
                                 </div>
                             </div>
                         </div>
-                        {(data1.fuelType === "Petrol (Gasoline)" || (data1.fuelType === "Diesel"))&&<div className="pageCon ">
+                        {(data1.fuelType === "Petrol (Gasoline)" || (data1.fuelType === "Diesel") || (data1.fuelType === "Petrol / LPG"))&&<div className="pageCon ">
                             <div className="page-title  blue-bg"><span style={{float:"left"}}>{translation.Engine[localStorage.getItem("language") || 'Engine']}</span> </div>
                             <div className="p-0">
                                 <div className="">

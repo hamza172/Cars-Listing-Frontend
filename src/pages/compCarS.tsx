@@ -155,7 +155,7 @@ export default function CompareTwoCars (){
                                 </div>
                             </div>
                         </div>
-                        <div className="pageCon ">
+                        {(data1.fuelType === "Petrol (Gasoline)" || (data1.fuelType === "Diesel") || (data1.fuelType === "Petrol / LPG")) &&<div className="pageCon ">
                             <div className="page-title"><span style={{float:"left"}}>{translation.Engine[localStorage.getItem("language") || 'Engine']}</span> </div>
                             <div className="p-3">
                                 <div className="">
@@ -209,8 +209,8 @@ export default function CompareTwoCars (){
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="pageCon ">
+                        </div>}
+                        {(data.fuelType === "Electricity")&&<div className="pageCon ">
                             <div className="page-title"><span style={{float:"left"}}>{translation.Electric[localStorage.getItem("language") || 'Electric']}</span> </div>
                             <div className="p-3">
                                 <div className="p-4">
@@ -256,7 +256,7 @@ export default function CompareTwoCars (){
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                         <div className="pageCon ">
                             <div className="page-title"><span style={{float:"left"}}>{translation.Drivetrain[localStorage.getItem("language") || 'Drivetrain']}</span> </div>
                             <div className="p-3">
@@ -459,7 +459,7 @@ export default function CompareTwoCars (){
                                 </div>
                             </div>
                         </div>
-                        <div className="pageCon ">
+                        {(data1.fuelType === "Petrol (Gasoline)" || (data1.fuelType === "Diesel") || (data1.fuelType === "Petrol / LPG")) && <div className="pageCon ">
                             <div className="page-title"><span style={{float:"left"}}>{translation.Engine[localStorage.getItem("language") || 'Engine']}</span> </div>
                             <div className="p-3">
                                 <div className="">
@@ -513,8 +513,8 @@ export default function CompareTwoCars (){
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="pageCon ">
+                        </div>}
+                       {(data1.fuelType === "Electricity")&& <div className="pageCon ">
                             <div className="page-title"><span style={{float:"left"}}>{translation.Electric[localStorage.getItem("language") || 'Electric']}</span> </div>
                             <div className="p-3">
                                 <div className="p-4">
@@ -560,7 +560,7 @@ export default function CompareTwoCars (){
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>}
                         <div className="pageCon ">
                             <div className="page-title"><span style={{float:"left"}}>{translation.Drivetrain[localStorage.getItem("language") || 'Drivetrain']}</span> </div>
                             <div className="p-3">
