@@ -524,13 +524,15 @@ export default function SingleCar(){
                                 {(brands.length>0)&&<>
                                     {brands.map((x)=><>
                                     <div className="archive-item col-lg-2 col-sm-4 col-xs-4 col-4">
+                                    <Link to={'/brands-models/'+x.name} className="no-underline white-text">
                                         <center >
                                             <img src={x.logo || "https://qesot.com/images/placeholder-img.png"}  alt="car"/>
                                             <div className="archive-item-inner">
-                                                <Link to={'/brands-models/'+x.name} className="no-underline white-text">{x.name}</Link><br/>
+                                                {x.name}<br/>
                                                 <span className="yellow-text totalcars">{translation.totalCars[localStorage.getItem("language") || 'Total Cars']} : {x.cars}</span>    
                                             </div>
                                             </center>
+                                    </Link>
                                     </div>
                                 </>)}
                                 </>}
