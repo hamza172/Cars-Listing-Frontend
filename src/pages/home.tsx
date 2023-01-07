@@ -63,7 +63,7 @@ export default function Home() {
                                 <img src={x.image || "https://qesot.com/images/placeholder-img.png"}  alt="car"/>
                                 <div className="archive-item-inner-4">
                                     <h4 className='blue-text'>{x.brand} {x.models} {x.generation} {x.startofproduction} </h4>    
-                                    <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power ? x.power : x.systempower}</span>  <br/>
+                                    <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power!=="None" && x.power ? x.power : x.systempower}</span>  <br/>
                                     <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} :</span><span className='lightgrey-text'>{x.brand}</span><br/>
                                 </div>    
                             </Link>
@@ -90,11 +90,11 @@ export default function Home() {
                                     
                                         <div className='row'>
                                             <div className='col-6' >
-                                                <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} :</span><span className='lightgrey-text'> {x.car1[0].power}</span>  <br/>
+                                                <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} :</span><span className='lightgrey-text'> {x.car1[0].power!=="None" && x.car1[0].power ? x.car1[0].power : x.car1[0].systempower }</span>  <br/>
                                                 <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.car1[0].brand}</span><br/>
                                             </div>
                                             <div className='col-6'>
-                                                <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.car2[0].power}</span>  <br/>
+                                                <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.car2[0].power!=="None" && x.car2[0].power ? x.car2[0].power : x.car2[0].systempower }</span>  <br/>
                                                 <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.car2[0].brand}</span><br/>
                                             </div>
                                         </div>
@@ -123,7 +123,7 @@ export default function Home() {
                                         <div className="col-md-7 col-7">
                                             <h4 className='blue-text'>{x.brand} {x.models} {x.generation} {x.startofproduction} </h4>
                                             <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} : </span><span className='lightgrey-text'>{x.brand}</span><br/>
-                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power!=="None" && x.power ? x.power : x.systempower }</span>  <br/>
                                             <span className="grey-text totalcars">{translation.Accelerationkmh[localStorage.getItem("language") || 'Acceleration 0 - 100 km/h']} : </span><span className='lightgrey-text'>{x.acceleration100}</span>  <br/>
                                             <span className="grey-text totalcars">{translation.Maximumspeed[localStorage.getItem("language") || 'Maximum speed']} : </span><span className='lightgrey-text'>{x.maximumspeed}</span>  <br/>  
                                         </div>

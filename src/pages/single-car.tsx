@@ -27,7 +27,7 @@ export default function SingleCar(){
                     <div className="col-md-12">
                         <div className="archive-item-cars-single">
                             <div className="row align-items-center p-1">
-                                <h2><b>{data.brand} {data.generation} {data.startofproduction} {data.power}</b></h2>
+                                <h2><b>{data.brand} {data.generation} {data.startofproduction} {data.power !== "None" ? data.power : data.systempower}</b></h2>
                                 <div className="col-md-4">
                                     <img src={data.images[0]?data.images[0].image : "https://qesot.com/images/placeholder-img.png"} alt="car" className='single-image-card-archive' />    
                                 </div>
@@ -76,7 +76,7 @@ export default function SingleCar(){
                     </div>
                 </div>}
 
-                <div className="pageCon ">
+                <div className="pageCon " style={{marginBottom:"0px"}}>
                     <div className="page-title"><span style={{float:"left"}}>{translation.technicalSheet[localStorage.getItem("language") || 'Technical Sheet']}: {data.brand} {data.generation} {data.startofproduction}</span></div>
                     <div className="container">
                     <div className="row">
@@ -155,7 +155,7 @@ export default function SingleCar(){
                     </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row" >
                     <div className="col-md-7">
                         <div className="pageCon ">
                             <div className="page-title blue-bg"><span style={{float:"left"}}>{translation.General[localStorage.getItem("language") || 'General']}</span> </div>
@@ -459,7 +459,7 @@ export default function SingleCar(){
                         {(topCars.length>0)&&<>
                             {topCars.map((x)=><>
                                 <div className="archive-item-cars">
-                                <Link to={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline'>
+                                <a href={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline'>
                                     <div className="row align-items-center">
                                         <div className="col-md-5 col-5">
                                             <img src={x.image || "https://qesot.com/images/placeholder-img.png"} alt="car" className='image-card-archive' />    
@@ -467,12 +467,12 @@ export default function SingleCar(){
                                         <div className="col-md-7 col-7 fontsizesmall">
                                             {x.brand} {x.generation} {x.startofproduction} <br/>
                                             <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} :</span><span className='lightgrey-text'> {x.brand}</span><br/>
-                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power ? x.power : x.systempower}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power !== "None"&& x.power ? x.power : x.systempower}</span>  <br/>
                                             <span className="grey-text totalcars">{translation.Accelerationkmh[localStorage.getItem("language") || 'Acceleration 0 - 100 km/h']} : </span><span className='lightgrey-text'>{x.acceleration100}</span>  <br/>
                                             <span className="grey-text totalcars">{translation.Maximumspeed[localStorage.getItem("language") || 'Maximum speed']} : </span><span className='lightgrey-text'>{x.maximumspeed}</span>  <br/>  
                                         </div>
                                     </div>
-                                    </Link>
+                                    </a>
                                 </div>
                             
                         </>)}
@@ -485,7 +485,7 @@ export default function SingleCar(){
 
 
                 {/* ------------------------ */}
-                <div className="pageCon">
+                <div className="pageCon" style={{marginTop:"0px"}}>
                 <div className="page-title"><span style={{float:"left"}}>{translation.hotCars[localStorage.getItem("language") || 'Hot Cars']}</span> <span  style={{float:"right"}}><Link className='no-underline yellow-text' to="#">{translation.seeMore[localStorage.getItem("language") || 'See More']} <AiOutlineDoubleRight style={{marginRight:"10px"}}/></Link></span></div>
                 <div className="archive">
                     <div className="row">
@@ -493,7 +493,7 @@ export default function SingleCar(){
                             {hotCars.map((x)=><>
                             <div className="col-md-6">
                                 <div className="archive-item-cars">
-                                <Link to={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline'>
+                                <a href={'/get-car/'+x.car_id+'/'+x.brand.replace(/\s/g, '')+'-'+x.generation.replace(/\s/g, '')+'-'+x.startofproduction.replace(/\s/g, '')} className='no-underline'>
                                     <div className="row align-items-center">
                                         <div className="col-md-5 col-5">
                                             <img src={x.image || "https://qesot.com/images/placeholder-img.png"} alt="car" className='image-card-archive' />    
@@ -501,12 +501,12 @@ export default function SingleCar(){
                                         <div className="col-md-7 col-7">
                                             {x.brand} {x.generation} {x.startofproduction} <br/>
                                             <span className="grey-text totalcars">{translation.Brand[localStorage.getItem("language") || 'Brand']} :</span><span className='lightgrey-text'> {x.brand}</span><br/>
-                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power ? x.power : x.systempower}</span>  <br/>
+                                            <span className="grey-text totalcars">{translation.Power[localStorage.getItem("language") || 'Power HP']} : </span><span className='lightgrey-text'>{x.power !== "None"&& x.power ? x.power : x.systempower}</span>  <br/>
                                             <span className="grey-text totalcars">{translation.Accelerationkmh[localStorage.getItem("language") || 'Acceleration 0 - 100 km/h']} : </span><span className='lightgrey-text'>{x.acceleration100}</span>  <br/>
                                             <span className="grey-text totalcars">{translation.Maximumspeed[localStorage.getItem("language") || 'Maximum speed']} : </span><span className='lightgrey-text'>{x.maximumspeed}</span>  <br/>  
                                         </div>
                                     </div>
-                                </Link>
+                                </a>
                                 </div>
                             </div>
                             
