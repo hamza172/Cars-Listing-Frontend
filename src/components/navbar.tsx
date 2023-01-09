@@ -23,7 +23,6 @@ import {
   RedditIcon,
   WhatsappIcon,
   } from "react-share";
-import { SettingsPhoneSharp } from '@material-ui/icons';
 import { translation } from '../translation';
 
 export default function NavBar() {

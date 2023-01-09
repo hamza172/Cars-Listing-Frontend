@@ -6,6 +6,7 @@ import { AiOutlineDoubleLeft,AiOutlineDoubleRight } from 'react-icons/ai';
 import { FaFacebookF,FaTwitter,FaYoutube,FaInstagram } from 'react-icons/fa';
 import { translation } from '../translation';
 import { getHomeElectricCars, getHomeTopCars, getHomeBrands, getHomeComparisonCar, getHomeHybridCars, getHomeHotCars, getHomeLatestCars } from "../functions/apiCalls"
+import { sliderImage1, vsImage } from './images';
 
 export default function Home() {
     const [electricCars, setElectricCars] =  useState<any[]>([])
@@ -31,7 +32,7 @@ export default function Home() {
             <Carousel.Item>
                 <img
                 className="d-block w-100 sliderImage"
-                src= "/images/8960.jpeg"
+                src= {sliderImage1}
                 alt="First slide"
                 />
                 <Carousel.Caption>
@@ -85,7 +86,7 @@ export default function Home() {
                                     </div>
                                     <div className="archive-item-inner-4">
                                      <center>
-                                        <img  className='vs-image' src="/images/vs.png" alt="vs"/>
+                                        <img  className='vs-image' src={vsImage} alt="vs"/>
                                         </center> <h4 className='blue-text'>{x.car1[0].brand} {x.models} {x.car1[0].generation} {x.car1[0].startofproduction} VS {x.car2[0].brand} {x.models} {x.car2[0].generation} {x.car2[0].startofproduction}</h4>
                                     
                                         <div className='row'>

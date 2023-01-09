@@ -1,14 +1,11 @@
 import { useState,useEffect } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import { getOne, getSearch } from '../functions/apiCalls';
+import { getOne} from '../functions/apiCalls';
 import Loader from '../components/loading';
 import { Link, useParams } from 'react-router-dom';
-import { BsSearch } from 'react-icons/bs';
 import { translation } from "../translation";
-import Form from 'react-bootstrap/Form';
 import { getHomeComparisonCar } from '../functions/apiCalls';
 import { AiOutlineDoubleRight } from 'react-icons/ai';
+import { vsImage } from './images';
 
 export default function CompareTwoCars (){
     let { id1,id2 } = useParams();
@@ -20,7 +17,7 @@ export default function CompareTwoCars (){
         getOne(parseInt(id1||'')).then((x)=>setData(x))
         getOne(parseInt(id2||'')).then((x)=>setData1(x))
         getHomeComparisonCar().then(x=>setCompareCars(x || []))
-    },[]) 
+    },[id1,id2]) 
     return (<>
         <div className="container">
             {(data.brand && data1.brand)?<div className="pageCon">
@@ -650,7 +647,7 @@ export default function CompareTwoCars (){
                                     </div>
                                     <div className="archive-item-inner-4">
                                      <center>
-                                        <img className='vs-image' src="/images/vs.png" alt="vs"/>
+                                        <img className='vs-image' src={vsImage} alt="vs"/>
                                         </center> <h4 className='blue-text'>{x.car1[0].brand} {x.models} {x.car1[0].generation} {x.car1[0].startofproduction} VS {x.car2[0].brand} {x.models} {x.car2[0].generation} {x.car2[0].startofproduction}</h4>
                                     
                                         <div className='row'>

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { bmw, buggati, cheverlot, footerCar, gmclogo, lamborghini, mercedes, porshe, tesla } from "../pages/images";
 import { translation } from "../translation";
 
 export default function Footer() {
@@ -43,22 +44,22 @@ export default function Footer() {
                         <div className="col-md-4">
                             <img
                             className="d-block f-logo-img"
-                            src= "/images/lamborghini-log.png"
+                            src= {lamborghini}
                             alt="First slide"
                             />
                             <img
                             className="d-block f-logo-img"
-                            src= "/images/mercedes-benz-l.png"
+                            src= {mercedes}
                             alt="First slide"
                             />
                             <img
                             className="d-block f-logo-img"
-                            src= "/images/gmc-logo.png"
+                            src= {gmclogo}
                             alt="First slide"
                             />
                             <img
                             className="d-block f-logo-img"
-                            src= "/images/chevrolet-logo.png"
+                            src= {cheverlot}
                             alt="First slide"
                             />
                         </div>
@@ -66,7 +67,7 @@ export default function Footer() {
                             <center>
                                 <img
                                     className="footer-bigcar"
-                                    src= "/images/unnamed.png"
+                                    src= {footerCar}
                                     alt="First slide"
                                     />
 
@@ -75,22 +76,22 @@ export default function Footer() {
                         <div className="col-md-4">
                             <img
                             className="d-block f-logo-img"
-                            src= "/images/bugatti-logo.png"
+                            src= {buggati}
                             alt="First slide"
                             />
                             <img
                             className="d-block f-logo-img"
-                            src= "/images/porsche-logo.png"
+                            src= {porshe}
                             alt="First slide"
                             />
                             <img
                             className="d-block f-logo-img"
-                            src= "/images/bmw-logo.png"
+                            src= {bmw}
                             alt="First slide"
                             />
                             <img
                             className="d-block f-logo-img"
-                            src= "/images/tesla-logo.png"
+                            src= {tesla}
                             alt="First slide"
                             /></div>
                     </div>

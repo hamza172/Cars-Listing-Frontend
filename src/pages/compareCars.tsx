@@ -1,14 +1,14 @@
 import { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { getCarsByYear, getOne, getSearch, getYears } from '../functions/apiCalls';
-import Loader, { MiniLoader } from '../components/loading';
+import { getCarsByYear, getOne, getYears } from '../functions/apiCalls';
+import  { MiniLoader } from '../components/loading';
 import { Link } from 'react-router-dom';
 import { translation } from "../translation";
-import { BsSearch } from 'react-icons/bs';
 import Form from 'react-bootstrap/Form';
 import { getHomeComparisonCar } from '../functions/apiCalls';
 import { AiOutlineDoubleRight, AiOutlinePlus } from 'react-icons/ai';
+import { vsImage } from './images';
 
 export default function CompareCars (){
     const [compareCars, setCompareCars] =  useState<any[]>([])
@@ -46,7 +46,7 @@ export default function CompareCars (){
                                     </div>
                                     <div className="archive-item-inner-4">
                                      <center>
-                                        <img className='vs-image' src="/images/vs.png" alt="vs"/>
+                                        <img className='vs-image' src={vsImage} alt="vs"/>
                                         </center> <h4 className='blue-text'>{x.car1[0].brand} {x.models} {x.car1[0].generation} {x.car1[0].startofproduction} VS {x.car2[0].brand} {x.models} {x.car2[0].generation} {x.car2[0].startofproduction}</h4>
                                     
                                         <div className='row'>

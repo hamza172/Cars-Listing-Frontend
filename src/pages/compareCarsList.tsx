@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import Loader from "../components/loading"
 import { getComparisonCar } from "../functions/apiCalls"
 import { translation } from "../translation"
+import { vsImage } from "./images"
 
 export default function AllCompares() {
     const [data, setData] =  useState<any[]>([])
@@ -26,7 +27,7 @@ export default function AllCompares() {
                                     </div>
                                     <div className="archive-item-inner-4">
                                      <center>
-                                        <img className='vs-image' src="/images/vs.png" alt="vs"/>
+                                        <img className='vs-image' src={vsImage} alt="vs"/>
                                         </center> <h4 className='blue-text'>{x.car1[0].brand} {x.models} {x.car1[0].generation} {x.car1[0].startofproduction} VS {x.car2[0].brand} {x.models} {x.car2[0].generation} {x.car2[0].startofproduction}</h4>
                                     
                                         <div className='row'>
